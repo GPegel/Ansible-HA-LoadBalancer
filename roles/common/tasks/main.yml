@@ -7,6 +7,13 @@
     - repo
     - yum
 
+- name: be sure libselinux-python are installed
+  yum:
+    name: "libselinux-python"
+    state: present
+  tags:
+    - selinux
+
 - name: be sure the EPEL repository is enabled
   yum:
     name: epel-release
