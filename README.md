@@ -37,7 +37,7 @@ Enter the IP address of your load balancer into a browser. If everything went we
 ```
 $ http://ip-address
 ```
-To start the HA Proxy application plesae go to this URL:
+To start the HA Proxy application please go to this URL:
 
 ```
 $ http://ip-address:8080/haproxy?stats
