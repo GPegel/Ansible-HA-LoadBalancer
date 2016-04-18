@@ -1,0 +1,6 @@
+---
+# handlers file for apache
+# File: handlers/main/main.yml
+- name: httpd
+  service: name=httpd state=restarted
+  tags: httpd

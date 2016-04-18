@@ -1,0 +1,32 @@
+---
+# tasks file for apache
+# Role: apache
+# File tasks/main.yml
+- name: install Apache
+  yum:
+    name: "httpd"
+    state: present
+  tags:
+    - httpd
+
+- name: install Apache SSL Module
+  yum:
+    name: "mod_ssl*"
+    state: present
+  tags:
+    - httpd
+
+- name: Copy index.html to Apache
+  copy: src={{ item }} dest=/var/www/html owner=root mode=0755
+  items:
+    - index.html
+  tags:
+    - httpd
+
+- name: be sure HTTPD is running and enabled
+  service:
+    name: httpd
+    state: running
+    enabled: yes
+  tags:
+    - httpd

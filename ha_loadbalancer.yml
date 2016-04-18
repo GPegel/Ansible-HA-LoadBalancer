@@ -1,0 +1,18 @@
+---
+- hosts: LoadBalancer
+  vars_files:
+    - "{{ env }}/group_vars/loadbalancer"
+    - "{{ env }}/group_vars/webservers"
+  roles:
+    - apache
+    - firewall
+    - haproxy
+    - ssl
+
+- hosts: WebServers
+  vars_files:
+    - "{{ env }}/group_vars/webservers"
+  roles:
+    - apache
+    - firewall
+    - ssl

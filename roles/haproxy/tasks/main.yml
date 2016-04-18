@@ -1,0 +1,52 @@
+---
+# tasks file for haproxy
+- name: make sure HAProxy Server is installed
+  yum:
+    name: "haproxy"
+    state: present
+  tags:
+    - haproxy
+
+- name: make sure OpenSSL is installed
+  yum:
+    name: "openssl-devel"
+    state: present
+  tags:
+    - haproxy
+
+- name: be sure HAProxy Server is configured
+  template: src="haproxy.cfg.j2" dest=/etc/haproxy/haproxy.cfg owner=root mode=0644
+  tags:
+    - haproxy
+
+- name: be sure RSysLog is configured
+  copy: src={{ item }} dest=/etc/ owner=root mode=0644
+  items:
+    - rsyslog.conf
+  tags:
+    - haproxy
+
+- name: be sure RSysLog HAProxy is configured
+  copy: src={{ item }} dest=/etc/rsyslog.d/ owner=root mode=0644
+  items:
+    - haproxy.conf
+  notify:
+    - reload rsyslog
+  tags:
+    - haproxy
+
+- name: be sure HTTPD is stopped and disabled
+  service:
+    name: httpd
+    state: stopped
+    enabled: no
+  tags:
+    - httpd
+
+- name: be sure HAProxy Server is running and enabled
+  service:
+    name: haproxy
+    state: running
+    enabled: yes
+  tags:
+    - haproxy

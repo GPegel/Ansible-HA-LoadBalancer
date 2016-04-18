@@ -1,0 +1,26 @@
+---
+# tasks file for firewall
+- name: make sure firewalld is installed
+  yum:
+    name: "firewalld"
+    state: present
+  tags:
+    - firewall
+
+- name: Add TCP Ports to firewalld
+  firewalld: port={{ item }}/tcp permanent=true state=enabled
+  with_items:
+    - 80
+    - 443
+    - 8080
+  tags:
+    - firewall
+
+- name: Add UDP Ports to firewalld
+  firewalld: port={{ item }}/udp permanent=true state=enabled
+  with_items:
+    - 514
+  notify:
+    - restart firewalld
+  tags:
+    - firewall

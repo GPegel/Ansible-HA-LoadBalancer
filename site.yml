@@ -1,0 +1,4 @@
+---
+# file: site.yml
+- include: gatherfacts.yml
+- include: ha_loadbalancer.yml
