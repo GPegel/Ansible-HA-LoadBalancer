@@ -42,3 +42,5 @@ To start the HA Proxy application plesae go to this URL:
 ```
 $ http://ip-address:8080/haproxy?stats
 ```
+
+This playbook is created by my, myself and I   ;-)
