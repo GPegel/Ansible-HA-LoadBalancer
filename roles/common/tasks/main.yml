@@ -7,6 +7,9 @@
     - repo
     - yum
 
+- name: be sure the server packages are up to date
+  yum: name=* state=latest
+
 - name: be sure libselinux-python are installed
   yum:
     name: "libselinux-python"
