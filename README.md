@@ -1,5 +1,5 @@
 # Ansible-HA-LoadBalancer
-High-Availability Load Balancer with ‘HAProxy’
+High-Availability Load Balancer with ‘HAProxy’.
 
 # What does this playbook do?
 When you need a quick way to setup a load balancer and multiple end-points for serving websites then this playbook could be a great help. In my example I've used 6 servers in total. One server as a load balancer and 4 servers as end-points and 1 extra server as a fallback for the 4 end-points. The load balancer will be running HAProxy (version 1.5.14) and a small statistics report is included.
@@ -36,10 +36,16 @@ Enter the IP address of your load balancer into a browser. If everything went we
 ```
 $ http://ip-address
 ```
-To start the HA Proxy application please go to this URL:
-
+To open the HA Proxy statistics page please go to this URL:
+The credentials are 'admin/admin' and you can change this in "/roles/haproxy/templates/haproxy.cfg.j2"
 ```
 $ http://ip-address:8080/haproxy?stats
 ```
+
+# Extra information
+
+1. Ansible version 2.0.1.0
+2. Playbook has been tested on virtual CentOS 7 servers
+3. Host: Ubuntu version 15.10
 
 This playbook is created by me, myself and I   ;-)
