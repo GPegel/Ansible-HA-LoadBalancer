@@ -1,5 +1,5 @@
 # Ansible-HA-LoadBalancer
-High-Availability Load Balancer with ‘HAProxy’..
+High-Availability Load Balancer with ‘HAProxy’.
 
 # What does this playbook do?
 When you need a quick way to setup a load balancer and multiple end-points for serving websites then this playbook could be a great help. In my example I've used 6 servers in total. One server as a load balancer and 4 servers as end-points and 1 extra server as a fallback for the 4 end-points. The load balancer will be running HAProxy (version 1.5.14) and a small statistics report is included.
