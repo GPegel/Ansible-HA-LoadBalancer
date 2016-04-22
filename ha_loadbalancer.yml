@@ -7,7 +7,6 @@
     - apache
     - firewall
     - haproxy
-    - ssl
 
 - hosts: WebServers
   vars_files:
@@ -15,4 +14,3 @@
   roles:
     - apache
     - firewall
-    - ssl
